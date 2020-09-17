@@ -1,0 +1,7 @@
+<h1>Yelp Clone</h1>
+
+<ul>
+    ${reviewsData.map(review => {
+        return `<li><a href="/restaurants/${review.slug}">${review.name}</a></li>`
+    }).join('')}
+</ul>
