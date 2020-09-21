@@ -22,7 +22,9 @@ server.listen(port, hostname, () => {
 
 const rootController = require("./routes/index");
 const restaurantController = require('./routes/restaurants');
+const usersController = require('./routes/users');
 
 
 app.use('/', rootController);
 app.use('/restaurants', restaurantController);
+app.use('/users', usersController);
