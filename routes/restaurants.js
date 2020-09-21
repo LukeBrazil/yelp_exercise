@@ -28,4 +28,13 @@ router.get('/:name?', async (req,res) => {
   
 })
 
+router.post("/:slug?", (req,res) => {
+    console.log(req.body);
+    const title = req.body.title;
+    const review = req.body.review;
+    reviewsModel.addReview(title, review);
+
+    res.redirect('back');
+})
+
 module.exports = router;

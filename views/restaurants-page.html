@@ -21,14 +21,15 @@
 
 <h1>Add Review</h1>
 
-<input type="text" placeholder="Enter Name Here" id='nameBox'>
-<br>
-<br>
-<input type="text" placeholder="Enter Email Here">
-<br>
-<br>
-<input type="text" placeholder="Enter Title Here">
-<input type="text" placeholder="Enter Review Here">
-<br>
-<br>
-<button placeholder='Submit Review' id='submitButton'>Submit Review</button>
+<form action='/restaurants' method="POST">
+    <label for="">
+        Title
+        <input type="text" name='title' placeholder='Title'>
+    </label>
+    <label for="">
+        Review
+        <input type="text" name='review' placeholder='Review'>
+    </label>
+    <button type="submit">Submit Review</button>
+    
+    </form>

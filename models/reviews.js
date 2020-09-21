@@ -2,7 +2,7 @@ const db = require('./conn');
 
 
 class reviewsModel {
-    constructor(id, name, distance, stars, category, favorite_dish, does_takeout, last_time_you_ate_there, slug) {
+    constructor(id, name, distance, stars, category, favorite_dish, does_takeout, last_time_you_ate_there, title, review, reviewer_id, restaurants_id, slug) {
         this.id = id;
         this.name = name;
         this.distance = distance;
@@ -11,6 +11,10 @@ class reviewsModel {
         this.favorite_dish = favorite_dish;
         this.does_takeout = does_takeout;
         this.last_time_you_ate_there = last_time_you_ate_there;
+        this.title = title;
+        this.review = review;
+        this.reviewer_id = reviewer_id;
+        this.restaurants_id = restaurants_id;
         this.slug = slug;
     }
     static async getRestaurants() {
@@ -54,6 +58,15 @@ class reviewsModel {
             AND restaurants.slug = '${slug}';`);
         return response;
         } catch (err) {
+            return err
+        }
+    }
+
+    static async addReview(title, review) {
+        try{
+            const response = await db.result(`INSERT INTO reviews(title, review) VALUES ($1, $2)`, [title, review]);
+            return response;
+        } catch(err) {
             return err
         }
     }
