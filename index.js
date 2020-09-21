@@ -8,6 +8,9 @@ const es6Renderer = require('express-es6-template-engine');
 const morgan = require('morgan');
 const logger = morgan('tiny');
 const helmet = require('helmet');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -23,6 +26,17 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(logger);
 app.use(helmet());
+app.use(
+    session({
+        store: new FileStore(),
+        secret: "type something else",
+        resave: false,
+        saveUninitialized: true,
+        is_logged_in: false
+    })
+);
+
+app.use(cookieParser());
 
 
 server.listen(port, hostname, () => {
