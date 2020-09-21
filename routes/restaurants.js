@@ -8,11 +8,17 @@ router.get('/:name?', async (req,res) => {
         res.redirect('/')
     } else {
         const restaurantData = await reviewsModel.getSingleRestaurant(req.params.name);
+        const reviewData = await reviewsModel.getReviews(req.params.name);
+        const reviewerData = await reviewsModel.getReviewer(req.params.name)
         console.log(restaurantData);
+        console.log(reviewData);
+        console.log(reviewerData);
         res.render('template', {
             locals: {
                 title: 'Yelp Clone',
-                restaurantData: restaurantData
+                restaurantData: restaurantData,
+                reviewData: reviewData,
+                reviewerData: reviewerData
             },
             partials: {
                 partial: 'restaurants-page'
