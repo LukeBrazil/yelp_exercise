@@ -21,7 +21,7 @@ router.get('/signup', (req, res) => {
     console.log(req.params);
     res.render('template', {
         locals: {
-            title: 'Signup'
+            title: 'Signup',
         },
         partials: {
             partial: 'partial-signup'
@@ -29,6 +29,10 @@ router.get('/signup', (req, res) => {
     })
 })
 
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+})
 
 router.post("/signup", (req,res) => {
     const name = req.body.name;

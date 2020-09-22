@@ -18,7 +18,7 @@ router.get('/:name?', async (req,res) => {
                 title: 'Yelp Clone',
                 restaurantData: restaurantData,
                 reviewData: reviewData,
-                reviewerData: reviewerData
+                reviewerData: reviewerData,
             },
             partials: {
                 partial: 'restaurants-page'

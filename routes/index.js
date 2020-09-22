@@ -8,7 +8,7 @@ const renderPage = async res => {
     res.render('template', {
         locals: {
             title: 'Yelp Clone',
-            reviewsData: reviewsData
+            reviewsData: reviewsData,
         },
         partials: {
             partial: 'partial-index'
